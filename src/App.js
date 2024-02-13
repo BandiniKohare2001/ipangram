@@ -82,18 +82,25 @@ const App = () => {
         <div>
         
           <table>
-                <th>Day</th>
+          <thead>
+            <tr>
+              <th>Day</th>
+              {/* {Array.from({ length: 5 }).map((_, index) => (
+           <th key={index}>{selectedWeek.clone().add(index, 'days').format('MMM D')}</th>
+                  ))} */}
+            </tr>
+          </thead>
           
             <tbody>
               {
+                
                 weeklySchedule.map((day, index) => (
                   <tr key={index}>
-                    <td className='day-names'>{day.day}</td>
+                    <td className='day-names'>{day.day}<br/><p className='date'>{selectedWeek.clone().add(index, 'days').format('MMM D')}</p></td>
                     {day.times.map((timeSlot, index) => (
                       <td key={index}>
 
-
-
+  
                         {
                           Config.days.map((tim, index) => {
                             const { time1, time2, t3, t4, t5, t6, t7, t8, t9, t10, t11 } = tim
