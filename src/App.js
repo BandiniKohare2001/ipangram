@@ -5,16 +5,15 @@ import Config from "./util.json";
 
 const App = () => {
 
-  let currentDate = new Date();
-  let date = currentDate.toLocaleDateString();
-
-
+ 
 
 
   const [selectedWeek, setSelectedWeek] = useState(moment());
   const [selectedTimezone, setSelectedTimezone] = useState('UTC');
   const [weeklySchedule, setWeeklySchedule] = useState([]);
 
+  let currentDate = new Date();
+  let date = currentDate.toLocaleDateString();
 
   useEffect(() => {
     const startOfWeek = selectedWeek.clone().startOf('week');
@@ -22,11 +21,10 @@ const App = () => {
 
     const loadWeeklyData = () => {
       const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-      const times = Array.from({ length: 1 }, (_, i) => i + 1); // 8 AM to 11 PM
+      const times = Array.from({ length: 1 }); // 8 AM to 11 PM
       const schedule = days.map(day => ({
         day,
         times: times.map(time => ({
-          hour: `${time < 10 ? '0' : ''}${time}:00`,
           checked: false
         }))
       }));
@@ -96,7 +94,9 @@ const App = () => {
                 
                 weeklySchedule.map((day, index) => (
                   <tr key={index}>
-                    <td className='day-names'>{day.day}<br/><p className='date'>{selectedWeek.clone().add(index, 'days').format('MMM D')}</p></td>
+                    <td className='day-names'>
+                      {day.day}<br/>
+                      <p className='date'>{selectedWeek.clone().startOf('week').add(index, 'days').format('MMM D')}</p></td>
                     {day.times.map((timeSlot, index) => (
                       <td key={index}>
 

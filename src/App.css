@@ -23,10 +23,14 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+.card-container{
+  width: 100%;
+}
 .card-1{
   display: flex;
   flex-wrap: wrap;
 padding-left: 20px;
+
 background-color: white;
   /* margin: -1% -1%; */
 }
