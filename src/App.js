@@ -9,12 +9,11 @@ const App = () => {
   const [selectedTimezone, setSelectedTimezone] = useState('UTC');
   const [weeklySchedule, setWeeklySchedule] = useState([]);
 
-  // Load weekly data when the selected week or timezone changes
+  
   useEffect(() => {
     const startOfWeek = selectedWeek.clone().startOf('week');
     const endOfWeek = selectedWeek.clone().endOf('week');
 
-    // Dummy function to load weekly working days and times
     const loadWeeklyData = () => {
       const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
       const times = Array.from({ length: 1 }, (_, i) => i + 1); // 8 AM to 11 PM
@@ -22,7 +21,7 @@ const App = () => {
         day,
         times: times.map(time => ({
           hour: `${time < 10 ? '0' : ''}${time}:00`,
-          checked: false // Initial checkbox state
+          checked: false
         }))
       }));
       setWeeklySchedule(schedule);
@@ -63,7 +62,7 @@ const App = () => {
         <select value={selectedTimezone} onChange={handleTimezoneChange} className='timezone'>
           <option value="UTC">UTC</option>
           <option value="America/New_York">America/New York</option>
-          {/* Add more timezones as needed */}
+   
         </select>
         <div>
           Weekly Schedule:
@@ -127,21 +126,33 @@ const App = () => {
                                     <p>{t7}</p>
                                     </div>
                                     <div className='day'>
-                                    <input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> 
-                                    <p>{t8}</p>
+                                    {
+                                      t8 ? (<input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> ):null
+                                    }<p>{t8}</p>
                                     </div>
                                     <div className='day'>
-                                    <input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> 
-                                    <p>{t9}</p>
+                                    {
+                                      t9 ? (<input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> ):null
+                                    }<p>{t9}</p>
                                     </div>
                                     <div className='day'>
-                                    <input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> 
-                                    <p>{t10}</p>
+                                    {
+                                      t10 ? (<input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> ):null
+                                    }<p>{t10}</p>
                                     </div>
+                                    
                                     <div className='day'>
-                                    <input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> 
-                                    <p>{t11}</p>
+                                    
+                                    {
+                                      t11 ? (<input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> ):null
+                                    }<p>{t11}</p>
+                                    
+                                    
                                     </div>
+                                   
+                            
+                                  
+                                     
                                    
                                     
                                       
