@@ -19,9 +19,12 @@
 .day{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 .card-1{
   display: flex;
+  flex-wrap: wrap;
+
   margin: -1% -1%;
 }

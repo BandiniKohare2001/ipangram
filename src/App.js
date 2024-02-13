@@ -9,7 +9,7 @@ const App = () => {
   const [selectedTimezone, setSelectedTimezone] = useState('UTC');
   const [weeklySchedule, setWeeklySchedule] = useState([]);
 
-  
+
   useEffect(() => {
     const startOfWeek = selectedWeek.clone().startOf('week');
     const endOfWeek = selectedWeek.clone().endOf('week');
@@ -51,7 +51,8 @@ const App = () => {
 
           <div> <p className='button' onClick={handlePrevWeek}>Previous Week</p></div>
 
-          <div><p>{selectedWeek.startOf('week').format('MMMM Do YYYY')} - {selectedWeek.endOf('week').format('MMMM Do YYYY')}</p></div>
+          <div>
+            <p>{selectedWeek.startOf('week').format('MMMM Do YYYY')} - {selectedWeek.endOf('week').format('MMMM Do YYYY')}</p></div>
 
           <div> <p className='button' onClick={handleNextWeek}>Next Week</p>
           </div>
@@ -62,7 +63,7 @@ const App = () => {
         <select value={selectedTimezone} onChange={handleTimezoneChange} className='timezone'>
           <option value="UTC">UTC</option>
           <option value="America/New_York">America/New York</option>
-   
+
         </select>
         <div>
           Weekly Schedule:
@@ -70,7 +71,6 @@ const App = () => {
             <thead>
               <tr>
                 <th>Day</th>
-
               </tr>
             </thead>
             <tbody>
@@ -81,95 +81,88 @@ const App = () => {
                     {day.times.map((timeSlot, index) => (
                       <td key={index}>
 
-                        
-                          
 
-                          {
-                            Config.days.map((tim, index) => {
-                              const { time1, time2, t3, t4,t5,t6,t7,t8,t9,t10,t11} = tim
-                              return (
-                                <div className='d-flex'>
-                                  <div className='card-container' key={index}>
-                                    <div className='card-1'>
-                                    <div className='day'>
-                                    <input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> 
-                                    <p>{time1}</p>
-                                    </div>
 
+
+                        {
+                          Config.days.map((tim, index) => {
+                            const { time1, time2, t3, t4, t5, t6, t7, t8, t9, t10, t11 } = tim
+                            return (
+                              <div className='d-flex'>
+                                <div className='card-container' key={index}>
+                                  <div className='card-1'>
                                     <div className='day'>
-                                    <input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> 
-                                    <p>{time2}</p>
+                                      <input type="checkbox" checked={timeSlot.checked} onChange={() => { }} />
+                                      <p>{time1}</p>
                                     </div>
 
                                     <div className='day'>
-                                    <input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> 
-                                    <p>{t3}</p>
+                                      <input type="checkbox" checked={timeSlot.checked} onChange={() => { }} />
+                                      <p>{time2}</p>
                                     </div>
 
                                     <div className='day'>
-                                    <input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> 
-                                    <p>{t4}</p>
+                                      <input type="checkbox" checked={timeSlot.checked} onChange={() => { }} />
+                                      <p>{t3}</p>
                                     </div>
 
                                     <div className='day'>
-                                    <input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> 
-                                    <p>{t5}</p>
+                                      <input type="checkbox" checked={timeSlot.checked} onChange={() => { }} />
+                                      <p>{t4}</p>
                                     </div>
 
                                     <div className='day'>
-                                    <input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> 
-                                    <p>{t6}</p>
+                                      <input type="checkbox" checked={timeSlot.checked} onChange={() => { }} />
+                                      <p>{t5}</p>
                                     </div>
 
                                     <div className='day'>
-                                    <input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> 
-                                    <p>{t7}</p>
+                                      <input type="checkbox" checked={timeSlot.checked} onChange={() => { }} />
+                                      <p>{t6}</p>
+                                    </div>
+
+                                    <div className='day'>
+                                      <input type="checkbox" checked={timeSlot.checked} onChange={() => { }} />
+                                      <p>{t7}</p>
                                     </div>
                                     <div className='day'>
-                                    {
-                                      t8 ? (<input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> ):null
-                                    }<p>{t8}</p>
+                                      {
+                                        t8 ? (<input type="checkbox" checked={timeSlot.checked} onChange={() => { }} />) : null
+                                      }<p>{t8}</p>
                                     </div>
                                     <div className='day'>
-                                    {
-                                      t9 ? (<input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> ):null
-                                    }<p>{t9}</p>
+                                      {
+                                        t9 ? (<input type="checkbox" checked={timeSlot.checked} onChange={() => { }} />) : null
+                                      }<p>{t9}</p>
                                     </div>
                                     <div className='day'>
-                                    {
-                                      t10 ? (<input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> ):null
-                                    }<p>{t10}</p>
+                                      {
+                                        t10 ? (<input type="checkbox" checked={timeSlot.checked} onChange={() => { }} />) : null
+                                      }<p>{t10}</p>
                                     </div>
-                                    
+
                                     <div className='day'>
-                                    
-                                    {
-                                      t11 ? (<input type="checkbox" checked={timeSlot.checked} onChange={() => { }} /> ):null
-                                    }<p>{t11}</p>
-                                    
-                                    
+
+                                      {
+                                        t11 ? (<input type="checkbox" checked={timeSlot.checked} onChange={() => { }} />) : null
+                                      }<p>{t11}</p>
+
+
                                     </div>
-                                   
-                            
-                                  
-                                     
-                                   
-                                    
-                                      
-                                    </div>
+
+
                                   </div>
                                 </div>
-                              )
-                            })
-                          }
-                         
-                          {/* {
-                 Array.from({ length: 16  }, (_, i) => i + 8).map(time => (
-             <th key={time}>{`${time < 10 ? '0' : ''}${time}:00 ${time}:30`}</th>
-           ))} */}
-                         <hr/>
+                              </div>
+                            )
+                          })
+                        }
+
+
+
+                        <hr />
                       </td>
-                     
+
                     ))}
                   </tr>
                 ))}
