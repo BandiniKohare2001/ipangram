@@ -30,7 +30,7 @@ const App = () => {
     loadWeeklyData();
   }, [selectedWeek, selectedTimezone]);
 
-  // Move to the previous or next week
+
   const handlePrevWeek = () => {
     setSelectedWeek(selectedWeek.clone().subtract(1, 'week'));
   };
