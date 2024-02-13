@@ -5,6 +5,12 @@ import Config from "./util.json";
 
 const App = () => {
 
+  let currentDate = new Date();
+  let date = currentDate.toLocaleDateString();
+
+
+
+
   const [selectedWeek, setSelectedWeek] = useState(moment());
   const [selectedTimezone, setSelectedTimezone] = useState('UTC');
   const [weeklySchedule, setWeeklySchedule] = useState([]);
@@ -51,7 +57,7 @@ const App = () => {
 
           <div> <p className='button' onClick={handlePrevWeek}>Previous Week</p></div>
 
-          <div>
+          <div><p>{date}</p>
             <p>{selectedWeek.startOf('week').format('MMMM Do YYYY')} - {selectedWeek.endOf('week').format('MMMM Do YYYY')}</p></div>
 
           <div> <p className='button' onClick={handleNextWeek}>Next Week</p>
@@ -61,26 +67,30 @@ const App = () => {
         </div>
         Timezone:<br />
         <select value={selectedTimezone} onChange={handleTimezoneChange} className='timezone'>
-          <option value="UTC">UTC</option>
+          <option value="UTC">[UTC-5] Eastern Standard Time </option>
           <option value="America/New_York">America/New York</option>
+          <option value="ind">India</option>
 
         </select>
+        <br />
+        <br />
         <div>
-          Weekly Schedule:
+          {/* <h2>Date :  {dateTime}</h2> */}
+
+
+        </div>
+        <div>
+        
           <table>
-            <thead>
-              <tr>
                 <th>Day</th>
-              </tr>
-            </thead>
+          
             <tbody>
               {
                 weeklySchedule.map((day, index) => (
                   <tr key={index}>
-                    <td>{day.day}</td>
+                    <td className='day-names'>{day.day}</td>
                     {day.times.map((timeSlot, index) => (
                       <td key={index}>
-
 
 
 
@@ -160,7 +170,7 @@ const App = () => {
 
 
 
-                        <hr />
+                        {/* <hr /> */}
                       </td>
 
                     ))}
